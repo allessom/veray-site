@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Veray — Atendimento inteligente para clínicas</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,500;8..60,600&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f7;
+    --surface: #ffffff;
+    --border: #e4e0da;
+    --text: #1d1b19;
+    --text-muted: #6b6560;
+    --accent: #0f6657;
+    --accent-soft: #e4f2ee;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --bg: #15130f;
+      --surface: #1d1a16;
+      --border: #332e27;
+      --text: #f2efe9;
+      --text-muted: #a69e93;
+      --accent: #4fd3ae;
+      --accent-soft: #1b2e27;
+      color-scheme: dark;
+    }
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', system-ui, sans-serif;
+    line-height: 1.6;
+    padding: 0 20px;
+  }
+  .wrap { max-width: 760px; margin: 0 auto; }
+  header {
+    padding: 64px 0 40px;
+    border-bottom: 1px solid var(--border);
+  }
+  .logo {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: 28px;
+    letter-spacing: -0.01em;
+    margin: 0 0 6px;
+  }
+  .tagline {
+    color: var(--text-muted);
+    font-size: 15px;
+    margin: 0;
+  }
+  main { padding: 48px 0; }
+  h1 {
+    font-family: 'Source Serif 4', serif;
+    font-weight: 600;
+    font-size: clamp(28px, 4vw, 38px);
+    line-height: 1.25;
+    text-wrap: balance;
+    margin: 0 0 20px;
+  }
+  .lead {
+    font-size: 17px;
+    color: var(--text-muted);
+    max-width: 58ch;
+    margin: 0 0 40px;
+  }
+  .grid {
+    display: grid;
+    gap: 16px;
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+    margin-bottom: 48px;
+  }
+  .card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 20px 22px;
+  }
+  .card h3 {
+    font-size: 15px;
+    margin: 0 0 8px;
+    color: var(--accent);
+  }
+  .card p {
+    font-size: 14px;
+    color: var(--text-muted);
+    margin: 0;
+  }
+  section + section { margin-top: 40px; }
+  h2 {
+    font-size: 13px;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: var(--text-muted);
+    margin: 0 0 14px;
+  }
+  .contact-row {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 24px;
+    font-size: 15px;
+  }
+  .contact-row span { color: var(--text-muted); }
+  footer {
+    border-top: 1px solid var(--border);
+    padding: 32px 0 56px;
+    margin-top: 56px;
+    font-size: 13px;
+    color: var(--text-muted);
+  }
+  a { color: var(--accent); }
+  .legal {
+    margin-top: 8px;
+    font-size: 12.5px;
+    line-height: 1.7;
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <p class="logo">Veray</p>
+    <p class="tagline">Atendimento e agendamento inteligente para clínicas</p>
+  </header>
+
+  <main>
+    <h1>Automatizamos o atendimento e a agenda de clínicas por voz e WhatsApp.</h1>
+    <p class="lead">
+      A Veray desenvolve assistentes de atendimento com inteligência artificial
+      para clínicas e consultórios — recepção automática por telefone e WhatsApp,
+      consulta de disponibilidade em tempo real e confirmação de consultas,
+      reduzindo faltas e liberando a recepção para o que importa.
+    </p>
+
+    <div class="grid">
+      <div class="card">
+        <h3>Atendimento por voz</h3>
+        <p>Assistente de voz atende ligações, entende a necessidade do paciente e agenda a consulta.</p>
+      </div>
+      <div class="card">
+        <h3>WhatsApp</h3>
+        <p>Conversas por texto com a mesma lógica de agenda, com confirmação e lembretes automáticos.</p>
+      </div>
+      <div class="card">
+        <h3>Agenda em tempo real</h3>
+        <p>Integração direta com a agenda da clínica, sem risco de conflito de horário.</p>
+      </div>
+    </div>
+
+    <section>
+      <h2>Contato</h2>
+      <div class="contact-row">
+        <div><span>E-mail</span><br>contato@veray.com.br</div>
+        <div><span>Site</span><br>veray.com.br</div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div>Veray — Automação de atendimento para clínicas</div>
+    <div class="legal">
+      68.976.193 Alisson Cristino Souza Miranda · CNPJ 68.976.193/0001-54<br>
+      <a href="https://claude.ai/artifact/NPskLBUq6np8EPkWZmiyVR">Política de Privacidade</a>
+    </div>
+  </footer>
+</div>
+</body>
+</html>

@@ -1,0 +1,484 @@
+<title>Privacidade Veray</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Public+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
+<style>
+  :root {
+    --bg: #faf9f6;
+    --surface: #ffffff;
+    --surface-2: #f1efe9;
+    --border: #e2ddd0;
+    --text: #201f1c;
+    --text-muted: #6b6459;
+    --accent: #1f6f5c;
+    --accent-soft: #e4efeb;
+    --accent-contrast: #ffffff;
+    color-scheme: light;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      --bg: #12181a;
+      --surface: #182022;
+      --surface-2: #1e2729;
+      --border: #293436;
+      --text: #e9ede9;
+      --text-muted: #9caaa3;
+      --accent: #5fc9a8;
+      --accent-soft: rgba(95, 201, 168, 0.14);
+      --accent-contrast: #0d1513;
+      color-scheme: dark;
+    }
+  }
+  :root[data-theme="dark"] {
+    --bg: #12181a;
+    --surface: #182022;
+    --surface-2: #1e2729;
+    --border: #293436;
+    --text: #e9ede9;
+    --text-muted: #9caaa3;
+    --accent: #5fc9a8;
+    --accent-soft: rgba(95, 201, 168, 0.14);
+    --accent-contrast: #0d1513;
+    color-scheme: dark;
+  }
+
+  * { box-sizing: border-box; }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: "Public Sans", -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+    line-height: 1.65;
+  }
+  .wrap {
+    max-width: 760px;
+    margin: 0 auto;
+    padding-inline: 20px;
+  }
+
+  header.top {
+    position: sticky;
+    top: env(safe-area-inset-top, 0px);
+    background: color-mix(in srgb, var(--bg) 88%, transparent);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    z-index: 10;
+  }
+  header.top .wrap {
+    display: flex;
+    align-items: baseline;
+    justify-content: space-between;
+    gap: 12px;
+    padding-block: 14px;
+    flex-wrap: wrap;
+  }
+  .wordmark {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.25rem;
+    letter-spacing: -0.01em;
+    color: var(--text);
+    text-decoration: none;
+  }
+  .wordmark span {
+    color: var(--accent);
+  }
+  header.top .doc-label {
+    font-size: 0.78rem;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+  }
+
+  main {
+    padding-block: 40px 80px;
+  }
+
+  .hero {
+    padding-block: 8px 32px;
+    border-bottom: 1px solid var(--border);
+    margin-bottom: 32px;
+  }
+  h1 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: clamp(1.9rem, 4vw, 2.6rem);
+    line-height: 1.12;
+    letter-spacing: -0.015em;
+    text-wrap: balance;
+    margin: 0 0 12px;
+  }
+  .lede {
+    color: var(--text-muted);
+    font-size: 1.02rem;
+    max-width: 58ch;
+    margin: 0 0 16px;
+  }
+  .meta-row {
+    display: flex;
+    gap: 10px;
+    flex-wrap: wrap;
+  }
+  .pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    font-size: 0.8rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 999px;
+    padding: 5px 12px;
+    font-weight: 600;
+  }
+
+  nav.toc {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 18px 20px;
+    margin-bottom: 40px;
+  }
+  nav.toc p {
+    margin: 0 0 10px;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    font-weight: 600;
+  }
+  nav.toc ol {
+    columns: 2;
+    column-gap: 24px;
+    margin: 0;
+    padding-left: 1.1em;
+    font-size: 0.92rem;
+  }
+  nav.toc li { break-inside: avoid; margin-bottom: 6px; }
+  nav.toc a {
+    color: var(--text);
+    text-decoration: none;
+    border-bottom: 1px solid transparent;
+  }
+  nav.toc a:hover { border-bottom-color: var(--accent); color: var(--accent); }
+
+  section.clause {
+    padding-block: 26px;
+    border-bottom: 1px solid var(--border);
+    scroll-margin-top: 70px;
+  }
+  section.clause:last-of-type { border-bottom: none; }
+  section.clause h2 {
+    font-family: "Fraunces", Georgia, serif;
+    font-weight: 600;
+    font-size: 1.3rem;
+    letter-spacing: -0.01em;
+    margin: 0 0 12px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+  }
+  section.clause h2 .num {
+    font-family: "Public Sans", sans-serif;
+    font-weight: 700;
+    font-size: 0.85rem;
+    color: var(--accent);
+    background: var(--accent-soft);
+    border-radius: 8px;
+    padding: 2px 8px;
+  }
+  section.clause p, section.clause li {
+    max-width: 66ch;
+    font-size: 0.98rem;
+  }
+  section.clause ul {
+    padding-left: 1.2em;
+    margin: 10px 0;
+  }
+  section.clause li { margin-bottom: 6px; }
+  section.clause strong { color: var(--text); }
+
+  .callout {
+    background: var(--surface-2);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 14px 16px;
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    max-width: 66ch;
+    margin-block: 14px;
+  }
+  .callout strong { color: var(--text); }
+
+  table.data-table {
+    width: 100%;
+    max-width: 66ch;
+    border-collapse: collapse;
+    margin-block: 14px;
+    font-size: 0.9rem;
+  }
+  table.data-table th, table.data-table td {
+    text-align: left;
+    padding: 8px 10px;
+    border-bottom: 1px solid var(--border);
+    vertical-align: top;
+  }
+  table.data-table th {
+    color: var(--text-muted);
+    font-weight: 600;
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.04em;
+  }
+
+  .contact-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 20px;
+    display: grid;
+    gap: 8px;
+    max-width: 66ch;
+  }
+  .contact-card .role {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.08em;
+    color: var(--accent);
+    font-weight: 700;
+  }
+  .contact-card .name {
+    font-family: "Fraunces", Georgia, serif;
+    font-size: 1.15rem;
+    font-weight: 600;
+  }
+  .contact-card .line {
+    color: var(--text-muted);
+    font-size: 0.92rem;
+  }
+  .copy-btn {
+    justify-self: start;
+    margin-top: 4px;
+    background: var(--accent);
+    color: var(--accent-contrast);
+    border: none;
+    border-radius: 8px;
+    padding: 8px 14px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    font-family: inherit;
+    cursor: pointer;
+  }
+  .copy-btn:active { transform: translateY(1px); }
+  .copy-note {
+    font-size: 0.78rem;
+    color: var(--accent);
+    min-height: 1em;
+  }
+
+  footer.page {
+    border-top: 1px solid var(--border);
+    padding-block: 24px 40px;
+  }
+  footer.page p {
+    color: var(--text-muted);
+    font-size: 0.82rem;
+    max-width: 66ch;
+  }
+
+  @media (max-width: 520px) {
+    nav.toc ol { columns: 1; }
+  }
+</style>
+
+<header class="top">
+  <div class="wrap">
+    <a class="wordmark" href="#top">Ver<span>ay</span></a>
+    <span class="doc-label">Política de privacidade</span>
+  </div>
+</header>
+
+<main>
+  <div class="wrap">
+    <div class="hero" id="top">
+      <h1>Política de privacidade</h1>
+      <p class="lede">Como a Veray trata os dados de pacientes e clínicas ao operar o atendimento de agendamento por voz e WhatsApp, em conformidade com a Lei Geral de Proteção de Dados (Lei nº 13.709/2018).</p>
+      <div class="meta-row">
+        <span class="pill">Versão 1.0</span>
+        <span class="pill">Vigente desde 27 de setembro de 2026</span>
+      </div>
+    </div>
+
+    <nav class="toc" aria-label="Sumário">
+      <p>Nesta política</p>
+      <ol>
+        <li><a href="#quem-somos">Quem somos</a></li>
+        <li><a href="#o-servico">O que o serviço faz</a></li>
+        <li><a href="#dados-tratados">Dados que tratamos</a></li>
+        <li><a href="#origem">De onde vêm os dados</a></li>
+        <li><a href="#finalidade">Para que usamos os dados</a></li>
+        <li><a href="#papeis">Nosso papel e o da clínica</a></li>
+        <li><a href="#base-legal">Base legal</a></li>
+        <li><a href="#compartilhamento">Com quem compartilhamos</a></li>
+        <li><a href="#transferencia">Transferência internacional</a></li>
+        <li><a href="#retencao">Por quanto tempo guardamos</a></li>
+        <li><a href="#seguranca">Segurança da informação</a></li>
+        <li><a href="#direitos">Seus direitos</a></li>
+        <li><a href="#menores">Dados de menores de idade</a></li>
+        <li><a href="#alteracoes">Alterações desta política</a></li>
+        <li><a href="#contato">Contato e encarregado</a></li>
+      </ol>
+    </nav>
+
+    <section class="clause" id="quem-somos">
+      <h2><span class="num">1</span>Quem somos</h2>
+      <p>Veray é o nome fantasia sob o qual Alisson Cristino Souza Miranda, inscrito como Microempreendedor Individual (MEI), presta serviços de tecnologia de atendimento e agendamento automatizado para clínicas, hospitais e consultórios. Esta política descreve como tratamos dados pessoais ao operar esse serviço, seja por ligação telefônica, seja por WhatsApp.</p>
+    </section>
+
+    <section class="clause" id="o-servico">
+      <h2><span class="num">2</span>O que o serviço faz</h2>
+      <p>Uma clínica contrata a Veray para atender seus pacientes por voz (telefone) e por WhatsApp, usando um assistente com inteligência artificial. Esse assistente responde dúvidas, consulta horários disponíveis e agenda, cancela ou reagenda consultas diretamente no sistema da clínica, em nome dela.</p>
+      <p>Quem interage com o assistente pode ser o próprio paciente ou outra pessoa marcando em nome dele — por exemplo, um familiar ligando para agendar a consulta de um dependente.</p>
+    </section>
+
+    <section class="clause" id="dados-tratados">
+      <h2><span class="num">3</span>Dados que tratamos</h2>
+      <table class="data-table">
+        <thead>
+          <tr><th>Categoria</th><th>Exemplos</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Identificação</td><td>Nome completo, CPF</td></tr>
+          <tr><td>Contato</td><td>Número de telefone (voz e/ou WhatsApp)</td></tr>
+          <tr><td>Agendamento</td><td>Data, horário, profissional, especialidade e motivo informado da consulta</td></tr>
+          <tr><td>Convênio</td><td>Nome do plano de saúde e número da carteirinha, quando aplicável</td></tr>
+          <tr><td>Conteúdo da conversa</td><td>Transcrição da ligação ou da conversa de WhatsApp, para o assistente conduzir o atendimento</td></tr>
+        </tbody>
+      </table>
+      <div class="callout">
+        <strong>Dados sensíveis de saúde.</strong> O assistente não pergunta sobre condição de saúde além do estritamente necessário para o agendamento. Se o paciente mencionar espontaneamente uma condição de saúde durante o atendimento (por exemplo, ao explicar o motivo da consulta), esse dado sensível é tratado com o mesmo cuidado desta política e só é utilizado para o atendimento em questão.
+      </div>
+    </section>
+
+    <section class="clause" id="origem">
+      <h2><span class="num">4</span>De onde vêm os dados</h2>
+      <p>Os dados são fornecidos diretamente por quem fala com o assistente, durante a própria ligação ou conversa de WhatsApp. Não compramos, alugamos ou obtemos dados de pacientes de nenhuma outra fonte.</p>
+    </section>
+
+    <section class="clause" id="finalidade">
+      <h2><span class="num">5</span>Para que usamos os dados</h2>
+      <ul>
+        <li>Consultar disponibilidade de horários e agendar, cancelar ou reagendar consultas.</li>
+        <li>Confirmar consultas marcadas e enviar lembretes antes do atendimento.</li>
+        <li>Identificar o paciente com segurança quando ele liga ou escreve novamente, para localizar ou alterar uma consulta existente.</li>
+        <li>Registrar e investigar falhas técnicas do próprio atendimento automatizado.</li>
+      </ul>
+      <p>Não usamos os dados dos pacientes para publicidade própria da Veray, nem os compartilhamos entre clínicas diferentes: cada clínica contratante só tem acesso aos dados dos seus próprios pacientes.</p>
+    </section>
+
+    <section class="clause" id="papeis">
+      <h2><span class="num">6</span>Nosso papel e o da clínica</h2>
+      <p>Em termos da LGPD, a clínica contratante é a <strong>controladora</strong> dos dados dos seus pacientes — é ela quem decide atender por este canal e é a responsável final perante o paciente. A Veray atua como <strong>operadora</strong>: tratamos os dados estritamente para prestar o serviço de agendamento contratado pela clínica, seguindo as instruções dela, e não os utilizamos para finalidade própria alheia a esse contrato.</p>
+    </section>
+
+    <section class="clause" id="base-legal">
+      <h2><span class="num">7</span>Base legal</h2>
+      <p>Tratamos os dados necessários ao agendamento com base na <strong>execução de procedimento preliminar e do próprio atendimento solicitado pelo titular ou por seu responsável</strong> (art. 7º, V, da LGPD) — é o paciente, ou quem liga em seu nome, quem inicia o contato pedindo para marcar, cancelar ou reagendar uma consulta.</p>
+      <p>Quando a conversa envolve um dado sensível de saúde compartilhado espontaneamente, ele só é registrado com o entendimento de que o paciente o forneceu por vontade própria para viabilizar o atendimento (art. 11, II, da LGPD), nunca por exigência do assistente.</p>
+    </section>
+
+    <section class="clause" id="compartilhamento">
+      <h2><span class="num">8</span>Com quem compartilhamos</h2>
+      <ul>
+        <li><strong>A clínica contratante</strong> do atendimento, para quem os dados do agendamento são, em última instância, destinados.</li>
+        <li><strong>Fornecedores de infraestrutura</strong> estritamente necessários para operar o serviço: hospedagem de banco de dados, telefonia e reconhecimento/síntese de voz, e a própria plataforma de mensagens do WhatsApp. Esses fornecedores processam os dados em nosso nome, sob obrigação de confidencialidade, e não podem usá-los para fins próprios.</li>
+      </ul>
+      <p>Nunca vendemos dados pessoais a terceiros.</p>
+    </section>
+
+    <section class="clause" id="transferencia">
+      <h2><span class="num">9</span>Transferência internacional</h2>
+      <p>Alguns dos fornecedores de infraestrutura mencionados acima (voz e mensageria) processam dados em servidores fora do Brasil. Nesses casos, exigimos que o fornecedor mantenha padrões de segurança e confidencialidade compatíveis com a LGPD para o tratamento desses dados.</p>
+    </section>
+
+    <section class="clause" id="retencao">
+      <h2><span class="num">10</span>Por quanto tempo guardamos</h2>
+      <p>Mantemos os dados enquanto durar a relação entre o paciente e a clínica contratante, e pelo período adicional necessário para cumprir obrigações legais aplicáveis ao setor de saúde. O titular pode solicitar a exclusão ou anonimização dos seus dados a qualquer momento, conforme a seção 12 abaixo, respeitados os casos em que a lei exige a manutenção do registro por prazo mínimo.</p>
+    </section>
+
+    <section class="clause" id="seguranca">
+      <h2><span class="num">11</span>Segurança da informação</h2>
+      <p>Adotamos medidas técnicas e administrativas para proteger os dados tratados, incluindo controle de acesso restrito à equipe responsável pela operação do serviço e armazenamento em infraestrutura de banco de dados gerenciada por fornecedor especializado.</p>
+      <div class="callout">
+        <strong>Sistema em evolução.</strong> A Veray está em fase de estruturação e aprimora continuamente suas práticas de segurança, incluindo reforços adicionais para dados especialmente sensíveis. Nenhum sistema é absolutamente livre de risco; empregamos esforços razoáveis e proporcionais ao tratar dados pessoais.
+      </div>
+    </section>
+
+    <section class="clause" id="direitos">
+      <h2><span class="num">12</span>Seus direitos</h2>
+      <p>Como titular de dados pessoais, você pode solicitar, a qualquer momento e gratuitamente:</p>
+      <ul>
+        <li>Confirmação de que tratamos seus dados, e acesso a eles.</li>
+        <li>Correção de dados incompletos, inexatos ou desatualizados.</li>
+        <li>Anonimização, bloqueio ou eliminação de dados desnecessários ou tratados em desconformidade com a lei.</li>
+        <li>Portabilidade dos dados a outro fornecedor de serviço, mediante requisição expressa.</li>
+        <li>Eliminação dos dados tratados com base no seu consentimento.</li>
+        <li>Informação sobre com quem compartilhamos seus dados.</li>
+        <li>Revogação do consentimento eventualmente dado, a qualquer momento.</li>
+      </ul>
+      <p>Como atuamos como operadora a serviço da clínica contratante (seção 6), pedidos sobre um agendamento específico podem ser encaminhados também diretamente à clínica onde a consulta foi marcada. Você também pode nos contatar diretamente pelos canais da seção 15.</p>
+    </section>
+
+    <section class="clause" id="menores">
+      <h2><span class="num">13</span>Dados de menores de idade</h2>
+      <p>Quando a consulta agendada é de uma criança ou adolescente, os dados são fornecidos por um responsável legal, que atua em nome do menor durante todo o atendimento. Não coletamos dados de menores diretamente, sem a mediação de um responsável.</p>
+    </section>
+
+    <section class="clause" id="alteracoes">
+      <h2><span class="num">14</span>Alterações desta política</h2>
+      <p>Podemos atualizar esta política para refletir mudanças no serviço ou na legislação aplicável. A data de vigência no topo desta página sempre indica a versão mais recente. Mudanças relevantes serão comunicadas às clínicas contratantes.</p>
+    </section>
+
+    <section class="clause" id="contato">
+      <h2><span class="num">15</span>Contato e encarregado</h2>
+      <p>Dúvidas, solicitações sobre os seus dados ou sobre esta política podem ser enviadas diretamente ao responsável pela Veray:</p>
+      <div class="contact-card">
+        <span class="role">Responsável e ponto de contato para privacidade</span>
+        <span class="name">Alisson Cristino Souza Miranda</span>
+        <span class="line" id="email-text">alissonmiranda@veray.com.br</span>
+        <button class="copy-btn" id="copy-email" type="button">Copiar e-mail</button>
+        <span class="copy-note" id="copy-note"></span>
+      </div>
+    </section>
+
+    <footer class="page">
+      <p>Veray — tecnologia de atendimento e agendamento para clínicas. Esta política se aplica ao atendimento por voz e por WhatsApp prestado em nome das clínicas contratantes.</p>
+    </footer>
+  </div>
+</main>
+
+<script>
+  (function () {
+    var btn = document.getElementById('copy-email');
+    var note = document.getElementById('copy-note');
+    var email = 'alissonmiranda@veray.com.br';
+    if (!btn) return;
+    btn.addEventListener('click', function () {
+      function fallback() {
+        try {
+          var range = document.createRange();
+          range.selectNode(document.getElementById('email-text'));
+          window.getSelection().removeAllRanges();
+          window.getSelection().addRange(range);
+        } catch (e) {}
+        if (note) note.textContent = 'Selecionado — use Ctrl+C para copiar.';
+      }
+      try {
+        navigator.clipboard.writeText(email).then(function () {
+          if (note) note.textContent = 'E-mail copiado.';
+        }, fallback);
+      } catch (e) {
+        fallback();
+      }
+    });
+  })();
+</script>
